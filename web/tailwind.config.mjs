@@ -1,5 +1,6 @@
-import animations from '../src/index.js';
-import theme from '../src/theme.js';
+import animations from '@pgcode/tailwind-animations'
+
+import theme from '@pgcode/tailwind-animations/src/theme.js';
 
 const { animation } = theme;
 

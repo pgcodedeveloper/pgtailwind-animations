@@ -1,6 +1,6 @@
 {
   "name": "@pgcode/tailwind-animations",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A plugin to add in your tailwind proyect",
   "main": "./src/index.js",
   "type": "module",
