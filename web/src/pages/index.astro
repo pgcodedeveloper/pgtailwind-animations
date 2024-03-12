@@ -1,0 +1,74 @@
+---
+import Layout from '../layouts/Layout.astro';
+import theme from '../../../src/theme.js';
+
+const { animation } = theme;
+---
+
+<Layout title="Welcome to Astro.">
+	<main>
+		<header class="max-w-5xl mx-auto flex items-center justify-center flex-col py-10">
+			<h1 class="text-5xl font-bold">TailwindCSS animations</h1>
+			<h2 class="text-xl font-medium opacity-75">The best plugin of animations for tailwindCSS</h2>
+			<div class="mt-10 relative bg-slate-800 rounded-xl shadow-lg xl:ml-0 dark:shadow-none dark:ring-1 dark:ring-inset dark:ring-white/10 py-3 px-5 flex items-center gap-3">
+				<code class="flex-none text-sm text-slate-50 flex overflow-auto">
+					<span class="flex items-center">
+						<svg viewBox="0 -9 3 24" aria-hidden="true" class="flex-none overflow-visible text-sky-500 w-auto h-6 mr-3">
+							<path d="M0 0L3 3L0 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+						</svg>
+						<span class="flex-auto">npm install @pgcode/tailwind-animations</span>
+					</span>
+				</code>
+				<button id="btnClipPad" class="p-1 hover:bg-slate-600 rounded-xl transition">
+					<svg fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="w-8 h-8 text-white" data-code="npm install @pgcode/tailwind-animations">
+						<path d="M13 10.75h-1.25a2 2 0 0 0-2 2v8.5a2 2 0 0 0 2 2h8.5a2 2 0 0 0 2-2v-8.5a2 2 0 0 0-2-2H19"></path>
+						<path d="M18 12.25h-4a1 1 0 0 1-1-1v-1.5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1.5a1 1 0 0 1-1 1ZM13.75 16.25h4.5M13.75 19.25h4.5"></path>
+					</svg>
+				</button>
+			</div>
+		</header>
+
+		<section class="max-w-5xl mx-auto grid grid-cols-3 gap-4 mb-20">
+			{
+				Object.keys(animation).map(singleAnimation => {
+					return (
+						<article class="col-span-1 rounded-md p-2 border border-gray-200 cursor-crosshair transition hover:border-gray-400 hover:shadow" data-class={singleAnimation}>
+							<div class="p-4 flex gap-4 items-center justify-center flex-col w-full h-full">
+								<div id="box" class="w-16 h-16 bg-gray-200 rounded-md flex items-center justify-center"></div>
+								<h3 class="text-sm font-semibold">{singleAnimation}</h3>
+							</div>
+						</article>
+					)
+				})
+			}
+		</section>
+	</main>
+</Layout>
+
+<script>
+	const $articles = document.querySelectorAll('article');
+	$articles.forEach($article => {
+		const animation = $article.dataset.class;
+		const animationClass = `animate-${animation}`;
+		const $box = $article.querySelector('#box');
+
+		if($box){
+			$article.addEventListener('mouseenter', () =>{
+				$box.classList.add(animationClass);
+			});
+			$article.addEventListener('mouseleave', () =>{
+				$box.classList.remove(animationClass);
+			});
+		}
+	
+	});
+
+	const $btnClipPad = document.querySelector('#btnClipPad');
+	$btnClipPad?.addEventListener('click', () =>{
+		const $code = $btnClipPad?.querySelector('svg')?.dataset.code;
+		if(!$code) return null;
+		navigator.clipboard.writeText($code);
+		console.log(navigator.clipboard.readText());
+	});
+	
+</script>
