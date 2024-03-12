@@ -1,10 +1,85 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import theme from '@pgcode/tailwind-animations/src/theme.js';
 import CopyIcon from '../components/icons/CopyIcon.astro';
 import CodeBox from '../components/CodeBox.astro';
 import { Code } from 'astro:components';
-
+const theme ={
+	animation: [
+		"background-shine",
+		"fade-in",
+		"fade-out",
+		"slide-in-top",
+		"slide-in-bottom",
+		"slide-out-top",
+		"slide-out-bottom",
+		"zoom-in",
+		"zoom-out",
+		"rotate-90",
+		"rotate-180",
+		"rotate-360",
+		"flip-horizontal",
+		"flip-vertical",
+		"bounce",
+		"swing",
+		"wobble",
+		"pulse",
+		"shake",
+		"tada",
+		"jump",
+		"hang",
+		"roll-in",
+		"roll-out",
+		"float",
+		"sink",
+		"flash",
+		"jiggle",
+		"rubber-band",
+		"slide-in-left",
+		"slide-in-right",
+		"slide-out-left",
+		"slide-out-right",
+		"spin-clockwise",
+		"spin-counter-clockwise",
+		"flip-x",
+		"flip-y",
+		"blink",
+		"pop",
+		"expand-horizontally",
+		"contract-horizontally",
+		"expand-vertically",
+		"contract-vertically",
+		"fade-in-up",
+		"fade-in-down",
+		"fade-in-left",
+		"fade-in-right",
+		"fade-out-up",
+		"fade-out-down",
+		"fade-out-left",
+		"fade-out-right",
+		"sway",
+		"flip-in-x",
+		"flip-in-y",
+		"flip-out-x",
+		"flip-out-y",
+		"rotate-in",
+		"rotate-out",
+		"slide-rotate-in",
+		"slide-rotate-out",
+		"heartbeat",
+		"blurred-fade-in",
+		"horizontal-vibration",
+		"rotational-wave",
+		"skew",
+		"vertical-bounce",
+		"horizontal-bounce",
+		"tilt",
+		"squeeze",
+		"slide-up-fade",
+		"bounce-fade-in",
+		"swing-drop-in",
+		"pulse-fade-in"
+	]
+}
 const { animation } = theme;
 ---
 
@@ -44,7 +119,7 @@ export default {
 
 		<section class="max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-3 gap-4 mb-20">
 			{
-				Object.keys(animation).map(singleAnimation => {
+				animation.map(singleAnimation => {
 					return (
 						<article class="relative col-span-1 rounded-md p-2 border bg-slate-600 border-gray-200 cursor-crosshair transition hover:border-gray-400 hover:shadow" data-class={singleAnimation}>
 							<div class="p-4 flex gap-4 items-center justify-center flex-col w-full h-full">
